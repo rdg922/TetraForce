@@ -1,0 +1,187 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://engine/network_object.gd" type="Script" id=1]
+[ext_resource path="res://enemies/stalfos/stalfos.gd" type="Script" id=2]
+[ext_resource path="res://enemies/stalfos/stalfos.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.5
+height = 6.0
+
+[sub_resource type="Animation" id=3]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=4]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[sub_resource type="Animation" id=5]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="Enemies" type="Node2D"]
+
+[node name="Stalfos" type="KinematicBody2D" parent="."]
+position = Vector2( 117, 49 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+MAX_HEALTH = 0.5
+SPEED = 40
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stalfos"]
+playback_speed = 4.0
+anims/default = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Stalfos"]
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stalfos"]
+shape = SubResource( 2 )
+
+[node name="NetworkObject" type="Node" parent="Stalfos"]
+script = ExtResource( 1 )
+persistent = true
+update_properties = {
+"pos": Vector2( 0, 0 )
+}
+enter_properties = {
+"health": 100
+}
+
+[node name="Stalfos2" type="KinematicBody2D" parent="."]
+position = Vector2( 72, 74 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+MAX_HEALTH = 0.5
+SPEED = 40
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stalfos2"]
+playback_speed = 4.0
+anims/default = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Stalfos2"]
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stalfos2"]
+shape = SubResource( 2 )
+
+[node name="NetworkObject" type="Node" parent="Stalfos2"]
+script = ExtResource( 1 )
+persistent = true
+update_properties = {
+"pos": Vector2( 0, 0 )
+}
+enter_properties = {
+"health": 100
+}
+
+[node name="Stalfos3" type="KinematicBody2D" parent="."]
+position = Vector2( 197, 74 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+MAX_HEALTH = 0.5
+SPEED = 40
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stalfos3"]
+playback_speed = 4.0
+anims/default = SubResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Stalfos3"]
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stalfos3"]
+shape = SubResource( 2 )
+
+[node name="NetworkObject" type="Node" parent="Stalfos3"]
+script = ExtResource( 1 )
+persistent = true
+update_properties = {
+"pos": Vector2( 0, 0 )
+}
+enter_properties = {
+"health": 100
+}
+
+[node name="Stalfos4" type="KinematicBody2D" parent="."]
+position = Vector2( 165, 94 )
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 2 )
+MAX_HEALTH = 0.5
+SPEED = 40
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Stalfos4"]
+playback_speed = 4.0
+anims/default = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Stalfos4"]
+z_as_relative = false
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stalfos4"]
+shape = SubResource( 2 )
+
+[node name="NetworkObject" type="Node" parent="Stalfos4"]
+script = ExtResource( 1 )
+persistent = true
+update_properties = {
+"pos": Vector2( 0, 0 )
+}
+enter_properties = {
+"health": 100
+}

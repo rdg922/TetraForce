@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.5" name="objects" tilewidth="16" tileheight="16" tilecount="8" columns="0">
+<tileset version="1.2" tiledversion="1.3.4" name="objects" tilewidth="16" tileheight="16" tilecount="9" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <properties>
@@ -50,5 +50,12 @@
  </tile>
  <tile id="7">
   <image width="16" height="16" source="images/objects/blueslime.png"/>
+ </tile>
+ <tile id="8">
+  <properties>
+   <property name="generator_seed" type="int" value="0"/>
+   <property name="path" value="res://engine/dungeon_generator.tscn"/>
+  </properties>
+  <image width="16" height="16" source="images/objects/dungeon_generator.png"/>
  </tile>
 </tileset>
