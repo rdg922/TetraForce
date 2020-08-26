@@ -1,19 +1,42 @@
 extends Node
 
 var player
+var equips = {"B": "Sword", "X": "", "Y": ""}
+var weapons = ["Sword"]
 
-onready var equips = {"B": "Sword", "X": "", "Y": ""}
+class WeaponInfo:
+	var path : String
+	var icon : Texture
+	var ammo_type : String
+	var acquire : String
+	
+	func _init(use_path,icon_texture,ammo="",acquire_path=""):
+		path = use_path
+		icon = icon_texture
+		ammo_type = ammo
+		acquire = acquire_path
 
-var items = ["Sword", "Bow"]
-
-var item_dict = {
-	"Sword": "res://items/sword.tscn",
-	"Bow": "res://items/arrow.tscn",
+var weapon_def = {
+	# "WeaponName": WeaponInfo.new(
+	# "path/to/weapon.tscn",
+	# preload("path/to/icon.png"),
+	# "ammo_type"
+	# "acquire_dialogue"),
+	
+	"Sword": WeaponInfo.new(
+		"res://entities/weapons/sword.tscn",
+		preload("res://entities/weapons/icons/sword.png"),
+		"",
+		""),
+	"Bow": WeaponInfo.new(
+		"res://entities/weapons/arrow.tscn",
+		preload("res://entities/weapons/icons/bow.png"),
+		"arrow",
+		"acquire_bow"),
 }
 
-var item_icons = {
-	"Sword": preload("res://ui/items/sword.png"),
-	"Bow": preload("res://ui/items/bow.png"),
+var ammo = {
+	"arrow": 30,
 }
 
 var next_entrance = "a"
@@ -23,7 +46,7 @@ signal options_loaded
 var options = {
 	player_data = {
 		name="Chain",
-		skin="res://player/player.png",
+		skin="res://entities/player/chain.png",
 	}
 }
 
@@ -57,9 +80,3 @@ func change_map(map, entrance):
 	old_map.queue_free()
 	next_entrance = entrance
 	root.add_child(new_map)
-
-func get_item_name(item_path):
-	return item_dict.keys()[item_dict.values().find(item_path)]
-
-func get_item_path(item_name):
-	return item_dict[item_name]
